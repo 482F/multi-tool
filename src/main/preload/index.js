@@ -1,4 +1,6 @@
 const { contextBridge, ipcRenderer } = require('electron')
+const fs = require('./fs.js')
+const images = require('./images.js')
 
 window.addEventListener('DOMContentLoaded', () => {
   //
@@ -32,6 +34,8 @@ const passObject = {
     listenIpc,
     sendIpc,
   },
+  fs,
+  images,
 }
 
 Object.entries(passObject).forEach(([apiKey, api]) =>
