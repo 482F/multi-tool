@@ -126,7 +126,6 @@ async function main() {
     mainWin.minimize()
   }
 
-
   mainWin.on('resized', () => {
     if (mainWin.isMaximized()) {
       return
@@ -182,4 +181,3 @@ async function main() {
 }
 
 main()
-

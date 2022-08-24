@@ -1,9 +1,9 @@
 export default {
-	input: 'src/main/background.js',
-	output: {
-		file: 'dist/background.js',
-		format: 'cjs',
-		compact: true,
-		sourcemap: true,
-	},
+  input: 'src/main/background.js',
+  output: {
+    dir: 'dist',
+    format: 'cjs',
+    compact: true,
+    sourcemap: true,
+  },
 }
