@@ -2,13 +2,9 @@
   <v-app>
     <v-main>
       <div class="electron-main">
-        <titlebar :title-left="titleLeft" :title-right="titleRight" />
+        <titlebar title-left="multi tool" title-right="" />
         <div class="electron-content">
-          <component
-            :is="components[name]"
-            v-model:title-left="titleLeft"
-            v-model:title-right="titleRight"
-          />
+          <component :is="components[name]" />
         </div>
       </div>
     </v-main>
@@ -18,10 +14,8 @@
 <script>
 import Titlebar from './components/titlebar.vue'
 import Main from './components/main.vue'
-import Sub from './components/sub.vue'
 const components = {
   Main,
-  Sub,
 }
 
 export default {
@@ -29,10 +23,7 @@ export default {
   components: {
     Titlebar,
   },
-  data: () => ({
-    titleLeft: 'lefttttttttt',
-    titleRight: 'rightttttttt',
-  }),
+  data: () => ({}),
   computed: {
     components() {
       return components
@@ -56,8 +47,8 @@ html {
         justify-content: center;
         align-items: center;
         .electron-main {
-          height: calc(100vh - 4px);
-          width: calc(100vw - 4px);
+          height: 100vh;
+          width: 100vw;
           font-family: Cica;
           display: flex;
           flex-direction: column;

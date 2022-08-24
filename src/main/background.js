@@ -53,7 +53,6 @@ async function main() {
         width: 300,
         height: 300,
       },
-      text: 'abc',
     },
   })
 
@@ -72,8 +71,7 @@ async function main() {
     height: size.height,
     minWidth: 300,
     minHeight: 300,
-    transparent: true,
-    // transparent: false, // で最大化ができるようになる
+    transparent: false,
     frame: false,
     toolbar: false,
     hasShadow: false,
