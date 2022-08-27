@@ -11,19 +11,6 @@
 </template>
 
 <script>
-const rawModules = import.meta.glob('./modules/*/index.vue')
-const modules = Object.fromEntries(
-  await Promise.all(
-    Object.entries(rawModules).map(async ([key, func]) => [
-      key.replaceAll(/^\.\/modules\/|\/index\.vue$/g, ''),
-      await func().then((result) => ({
-        component: result.default,
-        label: result.label ?? key,
-      })),
-    ])
-  )
-)
-
 import TabBar from './tab-bar.vue'
 
 export default {
@@ -31,18 +18,30 @@ export default {
   components: {
     TabBar,
   },
+  async mounted() {
+    const rawModules = import.meta.glob('./modules/*/index.vue')
+    this.modules = Object.fromEntries(
+      await Promise.all(
+        Object.entries(rawModules).map(async ([key, func]) => [
+          key.replaceAll(/^\.\/modules\/|\/index\.vue$/g, ''),
+          await func().then((result) => ({
+            component: result.default,
+            label: result.label ?? key,
+          })),
+        ])
+      )
+    )
+    this.currentTab = Object.values(this.modules)[0]?.label
+  },
   data: () => ({
-    currentTab: Object.values(modules)[0]?.label,
+    modules: [],
+    currentTab: undefined,
   }),
   computed: {
-    modules() {
-      return modules
-    },
     tabs() {
-      return Object.values(modules).map(({ label }) => label)
+      return Object.values(this.modules).map(({ label }) => label)
     },
   },
-  async mounted() {},
   methods: {},
 }
 </script>
