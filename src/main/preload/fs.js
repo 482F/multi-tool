@@ -52,6 +52,10 @@ myfs.evacuate = async (root, target, shelter) => {
 }
 
 myfs.join = path.join
+myfs.isDirectory = async (targetPath) => {
+  const stat = await fs.stat(targetPath)
+  return stat.isDirectory()
+}
 
 myfs.rename = fs.rename
 

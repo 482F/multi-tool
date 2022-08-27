@@ -1,9 +1,16 @@
 <template>
   <div class="png-to-jpg-converter">
-    <a-file-input v-model:file="file" @input="onInput" :disabled="processing" />
-    <v-progress-linear 
-    color="flaxen"
-    v-model="progressRate" :indeterminate="loading" />
+    <a-file-input
+      v-model:file="file"
+      @input="onInput"
+      :disabled="processing"
+      label="フォルダをドロップ"
+    />
+    <v-progress-linear
+      color="flaxen"
+      v-model="progressRate"
+      :indeterminate="loading"
+    />
   </div>
 </template>
 
@@ -35,6 +42,11 @@ export default {
       this.doneNum = 0
       this.loading = true
       this.processing = true
+      if (!(await window.fs.isDirectory(file.path))) {
+        this.loading = false
+        this.processing = false
+        return
+      }
       this.filePaths = window.fs.filterExt(
         await window.fs.getAllFilePaths(file.path),
         'png'
