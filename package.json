@@ -1,5 +1,5 @@
 {
-  "name": "vite-electron-template",
+  "name": "multi-tool",
   "version": "0.0.0",
   "scripts": {
     "serve": "powershell.exe /c npm-run-all makedir:dist filecopy:* background:build --parallel vite:dev --race electron:start --",
@@ -47,7 +47,7 @@
     "vuetify-loader": "^2.0.0-alpha.0"
   },
   "build": {
-    "productName": "vite-electron-template",
+    "productName": "multi-tool",
     "files": [
       "dist/**/*"
     ],
