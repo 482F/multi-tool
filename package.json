@@ -25,6 +25,7 @@
     "@mdi/font": "5.9.55",
     "electron-store": "^8.0.1",
     "fs-extra": "^10.0.1",
+    "jimp": "^0.16.1",
     "roboto-fontface": "*",
     "vue": "^3.2.25",
     "vuetify": "^3.0.0-alpha.0",
