@@ -60,6 +60,7 @@ html {
             overflow: auto;
           }
           * {
+            --flaxen: #EFE5CA;
             &::-webkit-scrollbar-track {
               background-color: #eee;
             }
